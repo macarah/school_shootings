@@ -203,7 +203,7 @@ function pieChart() {
 
     d3.csv("../../race_col.csv")
         .then(function(data) {
-            const width = 1000;
+            const width = 2000;
             const height = 600;
             const cellpadding = 3;
 
@@ -296,7 +296,7 @@ function pieChart() {
             // Create a legend
             const legend = svg.append("g")
                 .attr("class", "legend")
-                .attr("transform", "translate(" + (width - 250) + "," + 20 + ")");
+                .attr("transform", "translate(" + (width - 620) + "," + 20 + ")");
 
             const legendData = ["White", "Hispanic", "Asian", "Black", "American Indian/Alaska Native"];
 
@@ -323,6 +323,14 @@ function pieChart() {
                     else if (d === "American Indian/Alaska Native") return "#EFF1F1";
                     else return "#999";
                 });
+            // Append an image
+            svg.append("image")
+                .attr("xlink:href", '../../images/columbine_victims.png') // Replace with the path to your image file
+                .attr("x", width / 2 + 380) // Adjust the x-coordinate to position the image horizontally
+                .attr("y", height / 2 - 200) // Adjust the y-coordinate to position the image vertically
+                .attr("width", 500) // Set the width of the image
+                .attr("height", 500); // Set the height of the image
+
 
             // Add text labels to legend
             legends.append("text")
