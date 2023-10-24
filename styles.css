@@ -1,0 +1,20 @@
+body {
+    /* TODO make the background of the page black and the font colour white */
+    background-color: "white";
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.leaflet-container .leaflet-tile-pane img {
+    filter: grayscale(1)opacity(0.7);
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+#map {
+    height: 100%;
+}

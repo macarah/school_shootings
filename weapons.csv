@@ -1,0 +1,143 @@
+"","weapon","count"
+"1","handgun",62
+"2","9mm handgun",8
+"3","pistol",7
+"4",".22-caliber pistol",4
+"5",".45-caliber handgun",4
+"6","revolver",4
+"7","shotgun",4
+"8",".22-caliber handgun",3
+"9",".25-caliber handgun",3
+"10",".38-caliber handgun",3
+"11",".40-caliber handgun",3
+"12","rifle",3
+"13",".22 caliber pistol",2
+"14",".22 caliber revolver",2
+"15",".22-caliber revolver",2
+"16",".38 caliber handgun",2
+"17",".38-caliber revolver",2
+"18",".380-caliber handgun",2
+"19",".45 caliber handgun",2
+"20","12-gauge shotgun",2
+"21","hunting rifle",2
+"22","small revolver",2
+"23","small-caliber handgun",2
+"24",".22 caliber gun, .45 caliber gun",1
+"25",".22 caliber handgun",1
+"26",".22 caliber rifle, 357-caliber Magnum handgun",1
+"27",".22-caliber Colt revolver",1
+"28",".22-caliber Daisy rifle",1
+"29",".22-caliber Magnum handgun",1
+"30",".22-caliber Ruger pistol",1
+"31",".22-caliber revolver, .38-caliber revolver",1
+"32",".22-caliber semi-automatic handgun",1
+"33",".270 Winchester rifle with scope",1
+"34",".32 caliber semi-automatic pistol",1
+"35",".32-caliber handgun",1
+"36",".32-caliber semiautomatic handgun",1
+"37",".357 Magnum",1
+"38",".357 Magnum pistol",1
+"39",".357-caliber magnum revolver",1
+"40",".357-caliber revolver",1
+"41",".38 semiautomatic handgun",1
+"42",".38-caliber Smith & Wesson, .22-caliber handgun",1
+"43",".38-caliber pistol",1
+"44",".38-caliber snub-nosed revolver",1
+"45",".380 caliber semi-automatic handgun",1
+"46",".380 caliber semi-automatic pistol",1
+"47",".380 pistol",1
+"48",".380 semi-automatic handgun",1
+"49",".380-caliber Sig Sauer pistol",1
+"50",".380-caliber pistol",1
+"51",".380-caliber semi-automatic",1
+"52",".380-caliber semiautomatic handgun",1
+"53",".380-caliber semiautomatic pistol",1
+"54",".40 S&W caliber Glock 22 pistol, Smith & Wesson .357-caliber revolver",1
+"55",".40 caliber Glock",1
+"56",".40 caliber Glock 23 pistol, 870 12 gauge pump-action shotgun",1
+"57",".40 caliber pistol",1
+"58",".40-caliber Beretta Px4 Storm handgun",1
+"59",".40-caliber Ruger semiautomatic pistol",1
+"60",".44 caliber handgun",1
+"61",".44-caliber handgun, .22-caliber gun to kill himself",1
+"62",".45 caliber 1911 pistol",1
+"63",".45 caliber pistol",1
+"64",".45-caliber pistol",1
+"65",".45-caliber semi-automatic handgun",1
+"66",".762-caliber AK-47-style weapon, manufactured by Romarm/Cugar",1
+"67","12-gauge Savage-Springfield 67H pump-action shotgun, Hi-Point 995 Carbine 9 mm carbine, 9_19mm Intratec TEC-9 semi-automatic handgun, 12-gauge Stevens 311D double-barreled sawed-off shotgun",1
+"68","12-gauge Winchester shotgun",1
+"69","2 handguns",1
+"70","20-gauge shotgun",1
+"71","20-guage shotgun",1
+"72","22-caliber rifle",1
+"73","22-caliber semi-automatic",1
+"74","25-caliber nickel plate semi-automatic",1
+"75","380-caliber handgun",1
+"76","9 millimeter semiautomatic pistol",1
+"77","9 mm rifle, a Mossburg 12-gauge sawed-off shotgun",1
+"78","9 mm semi-automatic Ruger",1
+"79","9 mm semiautomatic handgun",1
+"80","9-mm Beretta handgun",1
+"81","9-mm. semi-automatic handgun",1
+"82","9mm Beretta pistol",1
+"83","9mm Glock",1
+"84","9mm gun (type unknown)",1
+"85","9mm handgun, a shotgun, a 30.06 rifle",1
+"86","AK pistol",1
+"87","AK-47",1
+"88","AK-47 and semiautomatic pistol",1
+"89","AK-47 assault-style rifle",1
+"90","AR-15",1
+"91","AR-15, pistol",1
+"92","Browning .380-caliber pistol",1
+"93","Bushmaster XM-15 rifle",1
+"94","Bushmaster XM15-E2S rifle",1
+"95","Charter Arms .44 Bulldog revolver",1
+"96","Glock",1
+"97","Glock .40-caliber S&W pistol",1
+"98","Glock 21 .45-caliber handgun",1
+"99","Glock 21 .45-caliber semi-automatic pistol, Beretta M9 9mm semi-automatic pistol, Taurus Revolver and a Ruger 10/22 .22-caliber semi-automatic rifle",1
+"100","Glock 45 handgun",1
+"101","Glock semi-automatic handgun",1
+"102","Loaded handgun",1
+"103","Lorcin .380-caliber semiautomatic pistol",1
+"104","M4 AR-15 rifle",1
+"105","MAC 90 7.26 mm assault rifle",1
+"106","Mossberg Model 500 12 gauge shotgun",1
+"107","Mossberg pump-action 12-gauge shotgun",1
+"108","RG .25-caliber pistol",1
+"109","Remington 870 shotgun and a .38-caliber revolver",1
+"110","Ruger MK III .22 caliber semi-automatic handgun",1
+"111","Ruger SR9C semi-automatic handgun (9mm)",1
+"112","Savage Arms Stevens Model 320 pump-action shotgun",1
+"113","Sig Sauer .40 caliber handgun",1
+"114","Sig Sauer P238",1
+"115","Smith & Wesson .357 Magnum revolver",1
+"116","Smith & Wesson M&P15",1
+"117","Smith and Wesson .40 caliber gun",1
+"118","Smith and Wesson M&P .45 caliber handgun",1
+"119","Taurus .380 pistol",1
+"120","Taurus 9mm pistol",1
+"121","Walther P1 9mm semiautomatic handgun",1
+"122","carbine rifle, assault weapon",1
+"123","ghost gun",1
+"124","handgun and a rifle",1
+"125","handmade AR-15-type rifle",1
+"126","high-powered rifle",1
+"127","large-caliber handgun with hollow-point bullets",1
+"128","long-barrel shotgun, 22-pistol",1
+"129","officer weapons",1
+"130","pistols",1
+"131","rifle and shotgun",1
+"132","semi-automatic .380 caliber handgun",1
+"133","semi-automatic handgun",1
+"134","semiautomatic pistol",1
+"135","service pistol",1
+"136","service weapon",1
+"137","single-shot shotgun",1
+"138","small semi-automatic handgun",1
+"139","small-caliber pistol",1
+"140","small-caliber semiautomatic handgun",1
+"141","small-caliber, semiautomatic pistol",1
+"142","sniper rifle",1
