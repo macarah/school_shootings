@@ -3,6 +3,7 @@ barChart();
 pieChart();
 shootings_map();
 
+
 function shootings_map() {
 
 
@@ -203,7 +204,7 @@ function pieChart() {
 
     d3.csv("../../race_col.csv")
         .then(function(data) {
-            const width = 2000;
+            const width = 1800;
             const height = 600;
             const cellpadding = 3;
 
@@ -214,7 +215,7 @@ function pieChart() {
                 .attr("height", height);
 
 
-            const margin = { top: 60, right: 30, bottom: 50, left: 50 };
+            const margin = { top: 60, right: 380, bottom: 50, left: 50 };
             chartWidth = width - margin.left - margin.right;
             chartHeight = height - margin.top - margin.bottom;
 
@@ -282,7 +283,7 @@ function pieChart() {
                 .attr("id", "chart-title")
                 .attr("x", width / 2)
                 .attr("y", 20)
-                .attr("text-anchor", "middle")
+                .attr("text-anchor", "end")
                 .style("font-size", "18px")
                 .style("fill", "black")
                 .text("");
@@ -296,7 +297,7 @@ function pieChart() {
             // Create a legend
             const legend = svg.append("g")
                 .attr("class", "legend")
-                .attr("transform", "translate(" + (width - 620) + "," + 20 + ")");
+                .attr("transform", "translate(" + (width - 540) + "," + 20 + ")");
 
             const legendData = ["White", "Hispanic", "Asian", "Black", "American Indian/Alaska Native"];
 
@@ -309,7 +310,7 @@ function pieChart() {
                 .enter()
                 .append("g")
                 .attr("class", "legend-item")
-                .attr("transform", (d, i) => "translate(0," + i * (legendRectSize + legendSpacing) + ")");
+                .attr("transform", (d, i) => "translate(-170," + i * (legendRectSize + legendSpacing) + ")");
 
             // Add colored squares to legend
             legends.append("rect")
@@ -326,8 +327,8 @@ function pieChart() {
             // Append an image
             svg.append("image")
                 .attr("xlink:href", '../../images/columbine_victims.png') // Replace with the path to your image file
-                .attr("x", width / 2 + 380) // Adjust the x-coordinate to position the image horizontally
-                .attr("y", height / 2 - 200) // Adjust the y-coordinate to position the image vertically
+                .attr("x", width / 2 + 200) // Adjust the x-coordinate to position the image horizontally
+                .attr("y", height / 2 - 150) // Adjust the y-coordinate to position the image vertically
                 .attr("width", 500) // Set the width of the image
                 .attr("height", 500); // Set the height of the image
 
@@ -345,8 +346,8 @@ function pieChart() {
         })
 
 }
-// TODO load the pollution.csv dataset (stored in the 'data' folder of this repo)
-// HINT be careful with the path to your dataset
+
+
 function barChart() {
     const w = 2000;
     const h = 900;
@@ -357,13 +358,15 @@ function barChart() {
         .attr("width", w)
         .attr("height", h)
         .style("margin-left", "25px"); // Adjust the margin as needed
+
+
     // Add chart title
     svg.append("text")
         .attr("x", w / 2)
         .attr("y", 30)
         .attr("text-anchor", "middle")
         .style("font-size", "24px")
-        .text("Casualties by Year");
+        .text("Casualties of School Shootings in USA by Year");
 
     d3.csv("../../casualties_year.csv")
         .then(function(data) {
