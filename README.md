@@ -6,4 +6,6 @@ In my poem, "Have we forgotten," I am focusing on the social justice issue of gu
 # How to run on local computer
 To run on your local computer clone or fork this repository to your local device. Use a code editor(I prefer VisualCode Studio) or terminal/shell that supports Javascript, CSS, and HTML to run the code (Note: visualizations will only display correctly with internet connection). Ensure that the current working directory is set to the cloned folder.
 
+# Link
+["Have we forgotten" by Macarah Morgan](https://www.macarah.net/)
 
