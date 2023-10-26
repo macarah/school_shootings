@@ -27,7 +27,7 @@ function shootings_map() {
         document.getElementById('map').appendChild(mapTitle);
 
 
-        d3.csv("../../school-shootings-data.csv")
+        d3.csv("../../data/school-shootings-data.csv")
             .then(function(csv) {
                 data = csv;
                 addMarkers();
@@ -65,7 +65,7 @@ function shootings_map() {
 
 function weapons() {
 
-    d3.csv("../../weapons.csv").then(function(data) {
+    d3.csv("../../data/weapons.csv").then(function(data) {
         const width = 12000;
         const height = 1000;
         const margin = { top: 50, right: 50, bottom: 50, left: 50 };
@@ -202,7 +202,7 @@ function weapons() {
 
 function pieChart() {
 
-    d3.csv("../../race_col.csv")
+    d3.csv("../../data/race_col.csv")
         .then(function(data) {
             const width = 1800;
             const height = 600;
@@ -368,7 +368,7 @@ function barChart() {
         .style("font-size", "24px")
         .text("Casualties of School Shootings in USA by Year");
 
-    d3.csv("../../casualties_year.csv")
+    d3.csv("../../data/casualties_year.csv")
         .then(function(data) {
             console.log(data);
 
