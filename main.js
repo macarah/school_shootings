@@ -1,25 +1,23 @@
 weapons();
 pieChart();
 shootings_map();
-
-let svg = d3.select("#svg");
-let keyframeIndex = 0;
-let sorted = 0;
-
-const width = 2000;
-const height = 900;
-
-let chart;
-let chartWidth;
-let chartHeight;
-
-let xScale;
-let yScale;
-
-initialiseSVG();
 updateBarChart("Casualties of School Shootings in USA by Year");
 
-function initialiseSVG() {
+
+function updateBarChart(title = "") {
+    let svg = d3.select("#svg");
+    let keyframeIndex = 0;
+    let sorted = 0;
+
+    const width = 2000;
+    const height = 900;
+
+    let chart;
+    let chartWidth;
+    let chartHeight;
+
+    let xScale;
+    let yScale;
 
     svg.attr("width", width);
     svg.attr("height", height);
@@ -75,10 +73,6 @@ function initialiseSVG() {
         .style("font-size", "14px")
         .style("fill", "black")
         .text("Year (1999-2023)");
-
-}
-
-function updateBarChart(title = "") {
 
     d3.csv("../../data/casualties_year.csv")
         .then(function(data) {
