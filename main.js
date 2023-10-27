@@ -80,7 +80,7 @@ function initialiseSVG() {
     svg.append("text")
         .attr("class", "y-axis-title")
         .attr("x", -height / 2)
-        .attr("y", -20)
+        .attr("y", -30)
         .attr("text-anchor", "middle")
         .attr("transform", "rotate(-90)")
         .style("font-size", "14px")
