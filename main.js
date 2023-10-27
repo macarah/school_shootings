@@ -76,16 +76,6 @@ function initialiseSVG() {
         .style("fill", "black")
         .text("Year (1999-2023)");
 
-    // Add y-axis title
-    svg.append("text")
-        .attr("class", "y-axis-title")
-        .attr("x", -height / 2)
-        .attr("y", -30)
-        .attr("text-anchor", "middle")
-        .attr("transform", "rotate(-90)")
-        .style("font-size", "14px")
-        .style("fill", "black")
-        .text("Total Number of Casualties");
 }
 
 function updateBarChart(title = "") {
