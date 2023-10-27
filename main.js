@@ -1,8 +1,180 @@
 weapons();
-barChart();
 pieChart();
 shootings_map();
 
+let svg = d3.select("#svg");
+let keyframeIndex = 0;
+let sorted = 0;
+
+const width = 2000;
+const height = 900;
+
+let chart;
+let chartWidth;
+let chartHeight;
+
+let xScale;
+let yScale;
+
+initialiseSVG();
+updateBarChart("Casualties of School Shootings in USA by Year");
+
+function initialiseSVG() {
+
+    svg.attr("width", width);
+    svg.attr("height", height);
+
+    svg.selectAll("*").remove();
+
+    const margin = { top: 50, right: 30, bottom: 50, left: 50 };
+    chartWidth = width - margin.left - margin.right;
+    chartHeight = height - margin.top - margin.bottom;
+
+    chart = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    xScale = d3.scaleBand()
+        .domain([])
+        .range([0, chartWidth])
+        .padding(0.1);
+
+    yScale = d3.scaleLinear()
+        .domain([])
+        .nice()
+        .range([chartHeight, 0]);
+
+    // Add x-axis
+    chart.append("g")
+        .attr("class", "x-axis")
+        .attr("transform", `translate(0,${chartHeight})`)
+        .call(d3.axisBottom(xScale))
+        .selectAll("text");
+
+    // Add y-axis
+    chart.append("g")
+        .attr("class", "y-axis")
+        .call(d3.axisLeft(yScale))
+        .selectAll("text");
+
+    // Add title
+    svg.append("text")
+        .attr("id", "chart-title")
+        .attr("x", width / 2)
+        .attr("y", 20)
+        .attr("text-anchor", "middle")
+        .style("font-size", "18px")
+        .style("fill", "black")
+        .text("");
+
+    // Add x-axis title
+    svg.append("text")
+        .attr("class", "x-axis-title")
+        .attr("x", width / 2)
+        .attr("y", height - 10)
+        .attr("text-anchor", "middle")
+        .style("font-size", "14px")
+        .style("fill", "black")
+        .text("Year (1999-2023)");
+
+    // Add y-axis title
+    svg.append("text")
+        .attr("class", "y-axis-title")
+        .attr("x", -height / 2)
+        .attr("y", -20)
+        .attr("text-anchor", "middle")
+        .attr("transform", "rotate(-90)")
+        .style("font-size", "14px")
+        .style("fill", "black")
+        .text("Total Number of Casualties");
+}
+
+function updateBarChart(title = "") {
+
+    d3.csv("../../data/casualties_year.csv")
+        .then(function(data) {
+            // TODO Update the xScale domain to match new order
+            // TODO Update the yScale domain for new values
+            xScale.domain(data.map(d => d["year"]));
+            yScale.domain([0, d3.max(data, d => d["total_casualties"])]).nice();
+
+            let colorScale = d3.scaleLinear()
+                .domain([0, d3.max(data, function(d) {
+                    return parseInt(d["total_casualties"]);
+                })])
+                .range([255, 0]);
+
+            // TODO select all the existing barsv
+            const bars = chart.selectAll(".bar")
+                .data(data, d => d["year"]);
+
+
+            // TODO remove any bars no longer in the dataset
+            // for removing bars - you want the height to go down to 0 and the y value to change too. Then you can call .remove()
+            bars.exit()
+                .transition().duration(500)
+                .attr("height", 0)
+                .attr("y", chartHeight)
+                .transition().duration(500)
+                .remove();
+
+            // TODO move any bars that already existed to their correct spot
+            // for moving existing bars - you'll have to update their x, y, and height values
+            bars.transition().duration(500).attr("x", d => xScale(d['year']))
+                .attr("y", d => yScale(d["total_casualties"]))
+                .attr("height", d => chartHeight - yScale(d["total_casualties"]))
+                .attr("fill", "#999");
+
+
+            // TODO Add any new bars
+            bars.enter().append("rect")
+                .attr("class", "bar")
+                .attr("x", d => xScale(d["year"]))
+                .attr("y", chartHeight) // Set initial y position below the chart so we can't see it
+                .attr("width", xScale.bandwidth())
+                .attr("height", 0) // Set initial height to 0 so there is nothing to display
+                .attr("fill", function(d) {
+                    let f = colorScale(d["total_casualties"])
+                    if (d["year"] != 1999 && d["year"] != 2012) {
+                        return "rgb(" + 255 + "," + f + "," + f + ")";
+                    } else {
+                        return "red";
+                    }
+                })
+                .transition() // Declare we want to do a transition
+                .duration(1000) // This one is going to last for one second
+                .attr("y", d => yScale(d["total_casualties"])) // Update the y value so that the bar is in the right location vertically
+                .attr("height", d => chartHeight - yScale(d["total_casualties"])); // Update the height value
+
+            // TODO update the x and y axis
+            chart.select(".x-axis")
+                .transition()
+                .duration(500)
+                .call(d3.axisBottom(xScale));
+
+            chart.select(".y-axis")
+                .transition()
+                .duration(500)
+                .call(d3.axisLeft(yScale));
+
+
+            // TODO update the title
+            // for the title .text is the function that actually changes the title
+            if (title.length > 0 && sorted == 0) {
+                var text = svg.select("#chart-title")
+                    .style("opacity", 0) // Start with opacity 0 (invisible)
+                    .transition()
+                    .duration(1000) // Title transition duration in milliseconds
+                    .style("opacity", 1)
+                    .text(title);
+                sorted = 0;
+            } else if (title.length > 0 && sorted == 1) {
+                var text = svg.select("#chart-title")
+                    .text(title);
+                sorted = 0;
+            }
+        })
+
+}
 
 function shootings_map() {
 
@@ -344,102 +516,5 @@ function pieChart() {
 
 
         })
-
-}
-
-
-function barChart() {
-    const w = 2000;
-    const h = 900;
-    const cellpadding = 3;
-
-    let svg = d3.select("body")
-        .append("svg")
-        .attr("width", w)
-        .attr("height", h)
-        .style("margin-left", "25px"); // Adjust the margin as needed
-
-
-    // Add chart title
-    svg.append("text")
-        .attr("x", w / 2)
-        .attr("y", 30)
-        .attr("text-anchor", "middle")
-        .style("font-size", "24px")
-        .text("Casualties of School Shootings in USA by Year");
-
-    d3.csv("../../data/casualties_year.csv")
-        .then(function(data) {
-            console.log(data);
-
-            //make a scale
-            let yScale = d3.scaleLinear()
-                .domain([0, d3.max(data, function(d) {
-                    return parseInt(d["total_casualties"]);
-                })])
-                .range([0, h / 2.5]);
-
-            let colorScale = d3.scaleLinear()
-                .domain([0, d3.max(data, function(d) {
-                    return parseInt(d["total_casualties"]);
-                })])
-                .range([255, 0]);
-
-            svg.selectAll("rect")
-                .data(data)
-                .enter()
-                .append("rect")
-                .attr("width", w / data.length - cellpadding)
-                .attr("height", function(d) {
-                    return yScale(d["total_casualties"]);
-                })
-                .attr("fill", function(d) {
-                    let f = colorScale(d["total_casualties"])
-                    if (d["year"] != 1999 && d["year"] != 2012) {
-                        return "rgb(" + 255 + "," + f + "," + f + ")";
-                    } else {
-                        return "red";
-                    }
-                })
-                .attr("x", function(d, i) { //spreads it/spaces it horizontally
-                    return w / data.length * i;
-                })
-                .attr("y", function(d) { //to flip the bars or else they hang from top
-                    return h / 2 - yScale(d["total_casualties"]);
-                })
-
-            // Append labels above bars
-            /*
-            svg.selectAll("text.bar-label")
-                .data(data)
-                .enter()
-                .append("text")
-                .text(function(d) {
-                    return d["total_casualties"];
-                })
-                .attr("class", "bar-label")
-                .attr("x", function(d, i) {
-                    return w / data.length * (i + 0.5); // Center the text above each bar
-                })
-                .attr("y", function(d) {
-                    return h / 2 - yScale(d["total_casualties"]) - 10; // Adjust the vertical position as needed
-                })
-                .attr("text-anchor", "middle") // Center the text horizontally
-                .style("font-size", "14px"); // Adjust the font size as needed
-            */
-
-            svg.selectAll("text")
-                .data(data)
-                .enter()
-                .append("text")
-                .text(function(d) {
-                    return d.year;
-                })
-                .attr("transform", function(d, i) {
-                    return "translate(" + (w / data.length * (i + .3)) + "," + ((h / 2) + 9) + ")rotate(45)"
-                })
-
-
-        });
 
 }
