@@ -364,7 +364,7 @@ function pieChart() {
             const height = 600;
             const cellpadding = 3;
 
-            svg.selectAll("*").remove();
+            //svg.selectAll("*").remove();
             let svg = d3.select("body")
                 .append("svg")
                 .attr("width", width)
