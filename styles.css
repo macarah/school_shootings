@@ -53,7 +53,9 @@ header {
     /* vh is the viewheight, you should use this VERY sparingly, this situation is ok because we're limiting what the user can do */
     /* we'll minus 150px as this is the height we have manually defined the header and footer to be combined (100px + 50px)*/
     /* If we changed the height of the header and footer we'd have to change this here too! */
-    min-height: calc(100vh - 30px);
+    min-height: calc(100vh - 50px);
+    /* Adjusted min-height considering the height of the header and footer (100px + 50px) */
+    padding-bottom: 50px;
 }
 
 .left-column {
