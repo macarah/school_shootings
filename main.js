@@ -387,7 +387,7 @@ function shootings_map() {
     scrollRightColumnToCoordinates(0, 0)
     var map;
     var data;
-    const margin = { top: 100, right: 30, bottom: 50, left: 50 };
+    const margin = { top: 50, right: 30, bottom: 50, left: 50 };
 
 
     // Set up the map within the global SVG element
