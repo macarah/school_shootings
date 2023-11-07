@@ -420,7 +420,7 @@ function shootings_map() {
         .style('text-align', 'center')
         .style('font-size', '18px')
         .style('color', 'black')
-        .text('School Shootings in the United States: 2012-Present');
+        .text('School Shootings in the United States: 1999-Present');
 
     // Create a container for the dropdown inside the SVG
     var dropdownContainer = svg.append("foreignObject")
