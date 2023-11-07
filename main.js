@@ -789,7 +789,7 @@ async function initialise() {
 
 function expandImage() {
     d3.selectAll(".fallen").on("mouseover", () => {
-        scrollRightColumnToCoordinates(10, 0);
+        scrollRightColumnToCoordinates(20, 0);
         svg.select("#colum-victims")
             .transition()
             .duration(1000)
