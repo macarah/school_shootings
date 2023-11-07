@@ -803,7 +803,7 @@ function makeSandyBarHoverable() {
         .duration(1000)
         .attr("xlink:href", '../../images/sandy_news.webp') // Replace with the path to your image file
         .attr("x", 600) // Adjust the x-coordinate to position the image horizontally
-        .attr("y", 250) // Adjust the y-coordinate to position the image vertically
+        .attr("y", 200) // Adjust the y-coordinate to position the image vertically
         .attr("width", 500) // Set the width of the image
         .attr("height", 400); // Set the height of the image
 
