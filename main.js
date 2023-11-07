@@ -771,8 +771,8 @@ function expandImage() {
             .duration(1000)
             .attr("x", 0) // Adjust the x-coordinate to position the image horizontally
             .attr("y", 75) // Adjust the y-coordinate to position the image vertically
-            .attr("width", 800) // Set the width of the image
-            .attr("height", 700); // Set the height of the image
+            .attr("width", 400) // Set the width of the image
+            .attr("height", 400); // Set the height of the image
 
     });
 
