@@ -789,6 +789,7 @@ async function initialise() {
 
 function expandImage() {
     d3.selectAll(".fallen").on("mouseover", () => {
+        scrollRightColumnToCoordinates(10, 0);
         svg.select("#colum-victims")
             .transition()
             .duration(1000)
@@ -862,6 +863,7 @@ function resetSandy() {
 function makeColumbineBarHoverable() {
     // Add a mouseover event listener
     d3.selectAll(".colum").on("mouseover", () => {
+        scrollRightColumnToCoordinates(0, 0);
         highlightColour("1999", "white");
         // Append an image
         svg.append("image")
