@@ -394,7 +394,7 @@ function shootings_map() {
     var mapContainer = svg.append('foreignObject')
         .attr('width', 1200 - margin.left - margin.right)
         .attr('height', height - margin.top - margin.bottom)
-        .attr("transform", "translate(" + margin.left + ",200)")
+        .attr("transform", "translate(" + margin.left + ",110)")
         .append('xhtml:div')
         .style('width', '100%')
         .style('height', '100%');
