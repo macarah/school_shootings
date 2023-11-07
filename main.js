@@ -3,7 +3,6 @@ let keyframes = [{
         activeLines: [1, 2, 3, 4],
         svgUpdate: () => {
             updateBarChart("Casualties of School Shootings in USA by Year");
-            hoverBarLabels();
         }
     },
     {
@@ -319,15 +318,6 @@ function updateBarChart(title = "") {
                 .data(data, d => d["year"]);
 
 
-            // TODO remove any bars no longer in the dataset
-            // for removing bars - you want the height to go down to 0 and the y value to change too. Then you can call .remove()
-            bars.exit()
-                .transition().duration(500)
-                .attr("height", 0)
-                .attr("y", chartHeight)
-                .transition().duration(500)
-                .remove();
-
             // TODO move any bars that already existed to their correct spot
             // for moving existing bars - you'll have to update their x, y, and height values
             bars.transition().duration(500).attr("x", d => xScale(d['year']))
@@ -350,6 +340,21 @@ function updateBarChart(title = "") {
                     } else {
                         return "red";
                     }
+                })
+                .on("mouseover", function(event, d) {
+                    // Show Y-axis value above the bar on hover
+                    chart.append("text")
+                        .attr("class", "bar-value-label")
+                        .attr("x", xScale(d["year"]) + xScale.bandwidth() / 2)
+                        .attr("y", yScale(d["total_casualties"]) - 10)
+                        .attr("text-anchor", "middle")
+                        .style("font-size", "20px")
+                        .style("fill", "white")
+                        .text(d["total_casualties"]);
+                })
+                .on("mouseout", function() {
+                    // Remove the Y-axis value label when mouse leaves the bar
+                    chart.selectAll(".bar-value-label").remove();
                 })
                 .transition() // Declare we want to do a transition
                 .duration(1000) // This one is going to last for one second
@@ -421,7 +426,6 @@ function shootings_map() {
     d3.csv("../../data/school-shootings-data.csv")
         .then(function(csv) {
             data = csv;
-            console.log("Data loaded" + data);
             addMarkers();
         })
         .catch(function(error) {
@@ -433,7 +437,6 @@ function shootings_map() {
 
     // Add markers of high schools
     function addMarkers() {
-        console.log("Adding markers");
         data.forEach(function(d) {
             var marker = L.marker([+d.lat, +d.long]);
 
@@ -473,6 +476,10 @@ function weapons() {
             .x(d => xScale(d.weapon) + xScale.bandwidth() / 2)
             .y(d => yScale(+d.count));
 
+        const tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
         // Draw line plot
         svg.append("path")
             .datum(data)
@@ -488,7 +495,7 @@ function weapons() {
             .attr("class", "data-point")
             .attr("transform", d => "translate(" + (xScale(d.weapon) + xScale.bandwidth() / 2) + "," + yScale(+d.count) + ")")
             .each(function(d) {
-                d3.select(this).append("circle")
+                const circle = d3.select(this).append("circle")
                     .attr("r", 5)
                     .attr("fill", function() {
                         if (d.weapon === "handgun" || d.weapon === "hunting rifle" || d.weapon === "pistol" || d.weapon === "revolver" || d.weapon === "rifle" || d.weapon === "sniper rifle") {
@@ -496,7 +503,8 @@ function weapons() {
                         } else {
                             return "#878E76";
                         }
-                    });
+                    })
+                    .style("cursor", "pointer");;
 
                 // Add image only if weapon is "handgun"
                 if (d.weapon === "handgun") {
@@ -565,6 +573,21 @@ function weapons() {
                         .attr('x', -200) // Adjust the horizontal position of the image relative to the circle
                         .attr('y', -240); // Adjust the vertical position of the image relative to the circle
                 }
+
+                const textLabel = d3.select(this).append("text")
+                    .attr("class", "label")
+                    .attr("y", -10)
+                    .attr("text-anchor", "middle")
+                    .style("font-size", "20px")
+                    .style("fill", "red")
+                    .style("display", "none")
+                    .text(d => d.weapon + ": " + d.count);
+
+                circle.on("mouseover", function(event, d) {
+                    textLabel.style("display", "block");
+                }).on("mouseout", function() {
+                    textLabel.style("display", "none");
+                });
             });
 
 
@@ -770,9 +793,9 @@ function expandImage() {
             .transition()
             .duration(1000)
             .attr("x", 0) // Adjust the x-coordinate to position the image horizontally
-            .attr("y", 75) // Adjust the y-coordinate to position the image vertically
-            .attr("width", 400) // Set the width of the image
-            .attr("height", 400); // Set the height of the image
+            .attr("y", 35) // Adjust the y-coordinate to position the image vertically
+            .attr("width", 1000) // Set the width of the image
+            .attr("height", 900); // Set the height of the image
 
     });
 
@@ -892,36 +915,5 @@ function resetBarColor(year) {
         })
 };
 
-function hoverBarLabels() {
-    var div = d3.select("body").append("div")
-        .attr("class", "tooltip-donut")
-        .style("opacity", 0);
-
-    d3.csv("../../data/casualties_year.csv")
-        .then(function(data) {
-            chart.selectAll(".bar")
-                .on("mouseover", function(d) {
-                    console.log(data[""])
-                    d3.select(this).transition()
-                        .duration('50')
-                        .attr('opacity', '.85');
-                    div.transition()
-                        .duration(50)
-                        .style("opacity", 1);
-                    div.html(data["total_casualties"])
-                        .style("left", (d3.event.pageX + 10) + "px")
-                        .style("top", (d3.event.pageY + 15) + "px");
-
-                })
-                .on("mouseout", function() {
-                    d3.select(this).transition()
-                        .duration('50')
-                        .attr('opacity', '1');
-                    div.transition()
-                        .duration('50')
-                        .style("opacity", 0);
-                });
-        })
-}
 
 initialise();

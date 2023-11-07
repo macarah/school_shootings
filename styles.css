@@ -153,6 +153,17 @@ svg {
     cursor: pointer;
 }
 
+.slider-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 200px;
+}
+
+.slider-container input[type=range] {
+    width: 100%;
+}
+
 div.tooltip-donut {
     position: absolute;
     text-align: center;
