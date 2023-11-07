@@ -398,7 +398,7 @@ function shootings_map() {
     // Set up the map within the global SVG element
     var mapContainer = svg.append('foreignObject')
         .attr('width', 1200 - margin.left - margin.right)
-        .attr('height', 500)
+        .attr('height', height - margin.top - margin.bottom)
         .attr("transform", "translate(" + margin.left + ",110)")
         .append('xhtml:div')
         .style('width', '100%')
@@ -425,7 +425,7 @@ function shootings_map() {
     // Create a container for the dropdown inside the SVG
     var dropdownContainer = svg.append("foreignObject")
         .attr("x", 50) // X-coordinate position of the dropdown container
-        .attr("y", 720) // Y-coordinate position of the dropdown container
+        .attr("y", 740) // Y-coordinate position of the dropdown container
         .attr("width", 150) // Width of the dropdown container
         .attr("height", 40) // Height of the dropdown container
         .append("xhtml:div");
