@@ -240,7 +240,7 @@ function updateBarChart(title = "") {
     svg.attr("width", width);
     svg.attr("height", height);
 
-    const margin = { top: 200, right: 30, bottom: 100, left: 50 };
+    const margin = { top: 200, right: 30, bottom: 120, left: 50 };
     chartWidth = 2100 - margin.left - margin.right;
     chartHeight = height - margin.top - margin.bottom;
 
@@ -387,7 +387,7 @@ function shootings_map() {
     scrollRightColumnToCoordinates(0, 0)
     var map;
     var data;
-    const margin = { top: 175, right: 30, bottom: -20, left: 50 };
+    const margin = { top: 175, right: 30, bottom: 120, left: 50 };
 
 
     // Set up the map within the global SVG element
