@@ -9,5 +9,5 @@ To run on your local computer clone or fork this repository to your local device
 # Link
 ["Have we forgotten" by Macarah Morgan](https://www.macarah.net/)
 
-**Last commit was an uncommenting to display a graph since I accidently forgot to uncomment. If necessary I will use a late token but the code was not changed for last commit besides the commenting.
+**Last commit was an uncommenting to display a graph since I accidently forgot to uncomment. If necessary I will use a late token but the code was not changed for last commit besides the commenting. <--this comment was for the static visual implementation milestone
 
