@@ -387,13 +387,13 @@ function shootings_map() {
     scrollRightColumnToCoordinates(0, 0)
     var map;
     var data;
-    const margin = { top: 175, right: 30, bottom: 120, left: 50 };
+    const margin = { top: 100, right: 30, bottom: 120, left: 50 };
 
 
     // Set up the map within the global SVG element
     var mapContainer = svg.append('foreignObject')
         .attr('width', 1200 - margin.left - margin.right)
-        .attr('height', height - margin.top - margin.bottom)
+        .attr('height', height - 175 - margin.bottom)
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
         .append('xhtml:div')
         .style('width', '100%')
