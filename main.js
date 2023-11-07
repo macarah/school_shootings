@@ -240,7 +240,7 @@ function updateBarChart(title = "") {
     svg.attr("width", width);
     svg.attr("height", height);
 
-    const margin = { top: 200, right: 30, bottom: 50, left: 50 };
+    const margin = { top: 200, right: 30, bottom: 100, left: 50 };
     chartWidth = 2100 - margin.left - margin.right;
     chartHeight = height - margin.top - margin.bottom;
 
@@ -285,7 +285,7 @@ function updateBarChart(title = "") {
     svg.append("text")
         .attr("class", "x-axis-title")
         .attr("x", 1000)
-        .attr("y", height - 5)
+        .attr("y", height - 50)
         .attr("text-anchor", "middle")
         .style("font-size", "14px")
         .style("fill", "white")
@@ -454,7 +454,7 @@ function weapons() {
     scrollRightColumnToCoordinates(0, 0)
     d3.csv("../../data/weapons.csv").then(function(data) {
         svg.selectAll("*").remove();
-        const margin = { top: 50, right: 50, bottom: 0, left: 50 };
+        const margin = { top: 50, right: 50, bottom: 120, left: 50 };
 
 
         // X and Y scales
@@ -614,7 +614,7 @@ function pieChart() {
 
             svg.selectAll("*").remove();
 
-            const margin = { top: 150, right: 30, bottom: 50, left: 50 };
+            const margin = { top: 150, right: 30, bottom: 100, left: 50 };
             chartWidth = 2100 - margin.left - margin.right;
             chartHeight = height - margin.top - margin.bottom;
 
