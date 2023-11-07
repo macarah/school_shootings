@@ -153,15 +153,35 @@ svg {
     cursor: pointer;
 }
 
-.slider-container {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    width: 200px;
+
+/* CSS for the dropdown */
+
+#year-dropdown {
+    font-size: 14px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 150px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
 }
 
-.slider-container input[type=range] {
-    width: 100%;
+
+/* CSS for dropdown options */
+
+#year-dropdown option {
+    font-size: 14px;
+    background-color: #fff;
+    color: #333;
+}
+
+
+/* Hover effect for dropdown options */
+
+#year-dropdown option:hover {
+    background-color: #f0f0f0;
 }
 
 div.tooltip-donut {

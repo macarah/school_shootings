@@ -422,22 +422,63 @@ function shootings_map() {
         .style('color', 'black')
         .text('School Shootings in the United States: 2012-Present');
 
-    // Load CSV data and add markers
-    d3.csv("../../data/school-shootings-data.csv")
-        .then(function(csv) {
+    // Create a container for the dropdown inside the SVG
+    var dropdownContainer = svg.append("foreignObject")
+        .attr("x", 50) // X-coordinate position of the dropdown container
+        .attr("y", 800) // Y-coordinate position of the dropdown container
+        .attr("width", 150) // Width of the dropdown container
+        .attr("height", 40) // Height of the dropdown container
+        .append("xhtml:div");
+
+    // Append the dropdown menu inside the container
+    var dropdown = dropdownContainer.append("select")
+        .attr("id", "year-dropdown");
+
+    // Load CSV data and populate dropdown options
+    d3.csv("../../data/school-shootings-data.csv").then(function(csv) {
             data = csv;
-            addMarkers();
+            var years = Array.from(new Set(data.map(function(d) { return d.year; })));
+            years.unshift("all");
+
+            // Populate the dropdown options using D3
+            dropdown.selectAll("option")
+                .data(years)
+                .enter().append("option")
+                .attr("value", function(d) { return d; })
+                .text(function(d) { return d === "all" ? "All Years" : d; });
+
+            // Add markers initially with all years selected
+            addMarkers("all");
         })
         .catch(function(error) {
             console.error("Error loading data:", error);
         });
 
-    //add markers of high schools
-    var index = 0;
+    // Event listener for dropdown change
+    dropdown.on("change", function() {
+        var selectedYear = d3.select(this).node().value;
+        addMarkers(selectedYear);
+    });
 
-    // Add markers of high schools
-    function addMarkers() {
-        data.forEach(function(d) {
+
+    function addMarkers(selectedYear) {
+        // Clear existing markers from the map
+        map.eachLayer(function(layer) {
+            if (layer instanceof L.Marker) {
+                map.removeLayer(layer);
+            }
+        });
+
+        // Filter data based on the selected year
+        var filteredData = data;
+        if (selectedYear !== "all") {
+            filteredData = data.filter(function(d) {
+                return d.year === selectedYear;
+            });
+        }
+
+        // Add markers to the map for the filtered data
+        filteredData.forEach(function(d) {
             var marker = L.marker([+d.lat, +d.long]);
 
             // Content for the popup
@@ -449,6 +490,7 @@ function shootings_map() {
             marker.addTo(map);
         });
     }
+
 }
 
 
