@@ -239,7 +239,7 @@ function updateBarChart(title = "") {
     svg.attr("width", width);
     svg.attr("height", height);
 
-    const margin = { top: 200, right: 30, bottom: 120, left: 50 };
+    const margin = { top: 300, right: 30, bottom: 50, left: 50 };
     chartWidth = 2100 - margin.left - margin.right;
     chartHeight = height - margin.top - margin.bottom;
 
@@ -274,7 +274,7 @@ function updateBarChart(title = "") {
     svg.append("text")
         .attr("id", "chart-title")
         .attr("x", 1000)
-        .attr("y", 175)
+        .attr("y", margin.top - 50)
         .attr("text-anchor", "middle")
         .style("font-size", "18px")
         .style("fill", "white")
@@ -284,7 +284,7 @@ function updateBarChart(title = "") {
     svg.append("text")
         .attr("class", "x-axis-title")
         .attr("x", 1000)
-        .attr("y", height - 50)
+        .attr("y", margin.top + chartHeight + 50)
         .attr("text-anchor", "middle")
         .style("font-size", "14px")
         .style("fill", "white")
@@ -293,7 +293,7 @@ function updateBarChart(title = "") {
     svg.append("text")
         .attr("class", "y-axis-title")
         .attr("transform", "rotate(-90)")
-        .attr("x", -height / 2)
+        .attr("x", -margin.top - chartHeight / 2)
         .attr("y", 20)
         .attr("text-anchor", "middle")
         .style("font-size", "14px")
@@ -399,7 +399,7 @@ function shootings_map() {
     var mapContainer = svg.append('foreignObject')
         .attr('width', 1200 - margin.left - margin.right)
         .attr('height', height - margin.top - margin.bottom)
-        .attr("transform", "translate(" + margin.left + ",110)")
+        .attr("transform", "translate(" + margin.left + "," + (margin.top + 100) + ")")
         .append('xhtml:div')
         .style('width', '100%')
         .style('height', '100%');
@@ -425,7 +425,7 @@ function shootings_map() {
     // Create a container for the dropdown inside the SVG
     var dropdownContainer = svg.append("foreignObject")
         .attr("x", 50) // X-coordinate position of the dropdown container
-        .attr("y", 740) // Y-coordinate position of the dropdown container
+        .attr("y", margin.top + height - 75) // Y-coordinate position of the dropdown container
         .attr("width", 150) // Width of the dropdown container
         .attr("height", 40) // Height of the dropdown container
         .append("xhtml:div");
@@ -499,7 +499,7 @@ function weapons() {
     scrollRightColumnToCoordinates(0, 0)
     d3.csv("../../data/weapons.csv").then(function(data) {
         svg.selectAll("*").remove();
-        const margin = { top: 50, right: 50, bottom: 120, left: 50 };
+        const margin = { top: 150, right: 50, bottom: 50, left: 50 };
 
 
         // X and Y scales
@@ -648,7 +648,7 @@ function weapons() {
         // Y-axis label
         svg.append("text")
             .attr("transform", "rotate(-90)")
-            .attr("x", -height / 2)
+            .attr("x", -margin.top - height / 2 + 20)
             .attr("y", 12)
             .attr("text-anchor", "middle")
             .text("# of School Shootings Responsible for:")
@@ -657,7 +657,7 @@ function weapons() {
         // Chart title
         svg.append("text")
             .attr("x", margin.left)
-            .attr("y", 175)
+            .attr("y", margin.top + 100)
             .attr("text-anchor", "start")
             .style("font-size", "24px")
             .style("fill", "white")
@@ -679,7 +679,7 @@ function pieChart() {
 
             svg.selectAll("*").remove();
 
-            const margin = { top: 150, right: 30, bottom: 100, left: 50 };
+            const margin = { top: 300, right: 30, bottom: 50, left: 50 };
             chartWidth = 2100 - margin.left - margin.right;
             chartHeight = height - margin.top - margin.bottom;
 
@@ -746,7 +746,7 @@ function pieChart() {
             svg.append("text")
                 .attr("id", "chart-title")
                 .attr("x", chartWidth / 4 + 200)
-                .attr("y", 175)
+                .attr("y", margin.top)
                 .attr("text-anchor", "end")
                 .style("font-size", "18px")
                 .style("fill", "black")
@@ -762,7 +762,7 @@ function pieChart() {
             // Create a legend
             const legend = svg.append("g")
                 .attr("class", "legend")
-                .attr("transform", "translate(" + (200) + "," + 220 + ")");
+                .attr("transform", "translate(" + (200) + "," + (margin.top + 10) + ")");
 
             const legendData = ["White", "Hispanic", "Asian", "Black", "American Indian/Alaska Native"];
 
@@ -835,8 +835,8 @@ function expandImage() {
         svg.select("#colum-victims")
             .transition()
             .duration(1000)
-            .attr("x", 0) // Adjust the x-coordinate to position the image horizontally
-            .attr("y", 35) // Adjust the y-coordinate to position the image vertically
+            .attr("x", 20) // Adjust the x-coordinate to position the image horizontally
+            .attr("y", 65) // Adjust the y-coordinate to position the image vertically
             .attr("width", 1000) // Set the width of the image
             .attr("height", 900); // Set the height of the image
 
