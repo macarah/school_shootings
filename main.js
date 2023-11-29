@@ -69,6 +69,7 @@ var isChartLoaded = false;
 // TODO add event listeners to the buttons
 document.getElementById("forward-button").addEventListener("click", forwardClicked);
 document.getElementById("backward-button").addEventListener("click", backwardClicked);
+document.getElementById("refresh-button").addEventListener("click", refreshClicked);
 
 function forwardClicked() {
     // TODO define behaviour when the forwards button is clicked
@@ -99,6 +100,11 @@ function backwardClicked() {
 
     }
 
+}
+
+function refreshClicked() {
+    //refresh page and go to hyperlink of website
+    location.reload();
 }
 
 function drawKeyframe(kfi) {
