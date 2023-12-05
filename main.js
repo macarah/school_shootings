@@ -279,9 +279,9 @@ function updateBarChart(title = "") {
     // Add title
     svg.append("text")
         .attr("id", "chart-title")
-        .attr("x", 1000)
-        .attr("y", margin.top - 50)
-        .attr("text-anchor", "middle")
+        .attr("x", 100)
+        .attr("y", margin.top - 20)
+        .attr("text-anchor", "start")
         .style("font-size", "18px")
         .style("fill", "white")
         .text("");
