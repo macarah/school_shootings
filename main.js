@@ -403,9 +403,9 @@ function shootings_map() {
 
     // Set up the map within the global SVG element
     var mapContainer = svg.append('foreignObject')
-        .attr('width', 1200 - margin.left - margin.right)
-        .attr('height', height - margin.top - margin.bottom)
-        .attr("transform", "translate(" + margin.left + "," + (margin.top + 100) + ")")
+        .attr('width', 1200 - margin.left - margin.right - 320)
+        .attr('height', height - margin.top - margin.bottom - 170)
+        .attr("transform", "translate(" + margin.left + "," + (margin.top + 170) + ")")
         .append('xhtml:div')
         .style('width', '100%')
         .style('height', '100%');
@@ -431,7 +431,7 @@ function shootings_map() {
     // Create a container for the dropdown inside the SVG
     var dropdownContainer = svg.append("foreignObject")
         .attr("x", 50) // X-coordinate position of the dropdown container
-        .attr("y", margin.top + height - 75) // Y-coordinate position of the dropdown container
+        .attr("y", margin.top + height - 130) // Y-coordinate position of the dropdown container
         .attr("width", 150) // Width of the dropdown container
         .attr("height", 40) // Height of the dropdown container
         .append("xhtml:div");
@@ -662,8 +662,8 @@ function weapons() {
 
         // Chart title
         svg.append("text")
-            .attr("x", margin.left)
-            .attr("y", margin.top + 100)
+            .attr("x", margin.left + 250)
+            .attr("y", margin.top + 140)
             .attr("text-anchor", "start")
             .style("font-size", "24px")
             .style("fill", "white")
