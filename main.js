@@ -662,8 +662,8 @@ function weapons() {
 
         // Chart title
         svg.append("text")
-            .attr("x", margin.left)
-            .attr("y", margin.top + 100)
+            .attr("x", margin.left + 250)
+            .attr("y", margin.top + 140)
             .attr("text-anchor", "start")
             .style("font-size", "24px")
             .style("fill", "white")
